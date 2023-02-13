@@ -1,0 +1,89 @@
+img {
+  display: block;
+  width: 100%;
+  height: 180px;
+}
+
+button {
+  padding: 10px 10px;
+  margin-left: 10px;
+  background-color: none;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+button.load-more {
+  display: block;
+  margin: 0 auto;
+  
+
+}
+
+button.is-hidden {
+  display: none;
+}
+
+button:hover {
+  color: #4961BC;
+  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+input { 
+  font-size: 15px;
+  padding: 10px 10px;
+  border-color: transparent;
+  border-radius: 5px;
+}
+
+b {
+  font-weight: normal;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+}
+
+b:hover {
+  color: #4961BC;
+}
+
+.search-form {
+  padding: 30px 0px;
+  text-align: center;
+  border-radius: 5px;
+  background-color: #4961BC;
+}
+
+.gallery {
+  margin: 0 auto;
+  width: 1200px;
+  margin-top: 20px;
+  padding: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  padding: 5px;
+}
+
+.info-item {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.photo-card {
+  width: calc((100% / 4) - 15px);
+  box-shadow: 8px 8px 12px -14px rgba(66, 68, 90, 1);
+  border-radius: 5px;
+}
+
+.photo-card:hover {
+  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
