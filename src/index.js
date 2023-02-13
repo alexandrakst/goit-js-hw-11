@@ -18,8 +18,7 @@ refs.loadMoreBtn.classList.add('is-hidden');
 function onSubmit(evt) {
   evt.preventDefault();
   const form = evt.currentTarget;
-  searchImages.galleryItems.inputValue =
-    refs.form.elements.searchQuery.value.trim();
+  searchImages.galleryItems.inputValue = form.elements.searchQuery.value.trim();
   refs.loadMoreBtn.classList.remove('is-hidden');
 
   if (searchImages.galleryItems.inputValue === '') {
@@ -41,6 +40,7 @@ function onSubmit(evt) {
       return;
     }
 
+    refs.form.reset();
     console.log(items);
   });
 
@@ -53,22 +53,25 @@ function onLoadMoreBtnClick() {
   refs.loadMoreBtn.disabled = true;
   refs.loadMoreBtn.textContent = 'Loading...';
 
-  searchImages
-    .fetchImages(searchImages.galleryItems.inputValue)
-    .then(items => {
-      searchImages.galleryItems.imagePage += 1;
-      console.log(items);
-      renderImages(items);
-      gallery.refresh();
-      refs.loadMoreBtn.disabled = false;
-      refs.loadMoreBtn.textContent = 'Load more';
-    })
-    .catch(error => {
+  try {
+    searchImages
+      .fetchImages(searchImages.galleryItems.inputValue)
+      .then(items => {
+        searchImages.galleryItems.imagePage += 1;
+        console.log(items);
+        renderImages(items);
+        gallery.refresh();
+        refs.loadMoreBtn.disabled = false;
+        refs.loadMoreBtn.textContent = 'Load more';
+      });
+  } catch (error) {
+    if (error.response.status === 400) {
       Notiflix.Notify.failure(
         "We're sorry, but you've reached the end of search results."
       );
       refs.loadMoreBtn.classList.add('is-hidden');
-    });
+    }
+  }
 }
 
 function renderImages(hits) {
